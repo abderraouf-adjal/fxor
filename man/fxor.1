@@ -1,0 +1,103 @@
+.\" This manual is current for version <0.1> of fxor.
+.TH FXOR "1" "10-2014" "fxor 0.1" ""
+
+.SH NAME
+fxor \- a small utility to encrypt a file content with a key in file using XOR
+
+.SH SYNOPSIS
+\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR
+.br
+\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR [\fIOPTION\fR]
+
+Display usage information:
+.br
+	\fBfxor\fR \fB\-\-help\fR
+
+Display version and copyright information:
+.br
+	\fBfxor\fR \fB\-\-version\fR
+
+.SH DESCRIPTION
+fxor is a tool that you can use to encrypt/decrypt \fIIN_FILE\fR content
+.br
+with \fIKEY_FILE\fR content using XOR cipher, and output to:
+.br
+	o  The file \fIOUT_FILE\fR
+.br
+	o  STDOUT if \fIOUT_FILE\fR not defined.
+
+fxor can be used as OTP (One\-Time Pad) tool.
+
+.IP "\fIIN_FILE\fR"
+Input file name, Witch will processed.
+
+.IP "\fIKEY_FILE\fR"
+Key file name, Usually random bytes file.
+
+.IP "\fIOUT_FILE\fR"
+Output file name.
+
+.SH OPTIONS
+.IP "\fB\-\-overwrite\fR, \fB\-r\fR"
+Overwrite (destroy contents) \fIOUT_FILE\fR then output
+.br
+.IP "\fB\-\-output\-to\-beginning\fR, \fB\-s\fR"
+Start output from \fIOUT_FILE\fR beginning and replace bytes, 
+.br
+Perfect to encrypt/decrypt \fIIN_FILE\fR and output to \fIIN_FILE\fR!.
+.br
+.IP "\fB\-\-ask\fR, \fB\-i\fR"
+Ask before change \fIOUT_FILE\fR contents
+
+.SH EXAMPLES
+Output to \fIOUT_FILE\fR (overwrite if exist):
+.br
+	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR \fB\-r\fR
+
+Output to \fIOUT_FILE\fR and replace byte by byte from beginning:
+.br
+	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR \fB\-s\fR
+
+Ask before change \fIOUT_FILE\fR contents:
+.br
+	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR \fB\-i\fR
+.br
+	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR \fB\-i\fR \fB\-r\fR
+.br
+	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR \fB\-i\fR \fB\-s\fR
+
+Output to STDOUT:
+.br
+	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR
+
+.SH EXIT STATUS
+.IP "\fB0\fR"
+EX_OK \- successful termination
+.br
+.IP "\fB64\fR"
+EX_USAGE \- invalid command line usage
+.br
+.IP "\fB66\fR"
+EX_NOINPUT \- cannot open input (e.g., files permissions)
+.br
+.IP "\fB74\fR"
+EX_IOERR \- error while doing I/O (e.g., no free space left)
+.br
+.IP "\fB80\fR"
+FXOR_EX_ABORT \- fxor abort
+.br
+.IP "\fB81\fR"
+EX_NOKEY \- key file is empty
+
+.SH AUTHOR
+Written by Abderraouf Adjal.
+
+.SH REPORTING BUGS
+Report fxor bugs to: <abderraouf.adjal@gmail.com>
+
+.SH COPYRIGHT
+Copyright (c) 2014 Abderraouf Adjal. All rights reserved.
+
+License: BSD 2-Clause License ('Simplified BSD License' or 'FreeBSD License'). There is NO WARRANTY.
+
+See the file 'COPYING' for details.

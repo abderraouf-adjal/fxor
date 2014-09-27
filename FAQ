@@ -1,0 +1,76 @@
+fxor FAQ
+========
+
+
+1.
+- Q: What is fxor license?
+- A: fxor license: BSD 2-Clause License ('Simplified BSD License' or 'FreeBSD License').
+     There is NO WARRANTY.
+     See the file "COPYING" for details.
+
+
+2.
+- Q: How fxor secure my data?
+- A: fxor secure your data by encrypting the content using XOR cipher,
+     and you can use it as one-time pad (OTP) tool.
+
+
+3.
+- Q: What is one-time pad (OTP)?
+- A: One-time pad: <https://en.wikipedia.org/wiki/One-time_pad>,
+     From Wikipedia: In cryptography, a one-time pad (OTP) is an encryption
+     technique that cannot be cracked if used correctly...
+
+
+4.
+- Q: What will happen if KEY_FILE size is smaller than IN_FILE?
+- A: fxor will XOR your data byte by byte, And when the end of KEY_FILE reached
+     it will back to the start of KEY_FILE and continue XORing,
+     When the end of IN_FILE is reached, fxor it will stop XORing.
+
+
+5.
+- Q: What will happen if KEY_FILE size is bigger than IN_FILE?
+- A: fxor will XOR you data byte by byte, and it will stop when
+     the end of IN_FILE is reached.
+
+
+6.
+- Q: For what is the options '--output-to-beginning, -s'?
+- A: If you have a 4GB file in a 4GB flash-disk you can
+     encrypt/decrypt it on the same file and the disk!
+
+
+7.
+- Q: What will happen if i run 'fxor file1 key file1 -r'?
+- A: You will just lose 'file1' data, '--overwrite, -r' will make 'file1" empty first,
+     So no data will be exist to encrypt/decrypt it.
+
+
+8.
+- Q: Is it safe to reuse a Key file for other files?
+- A: No, never ever do that for a serious security reason (read about one-time pad),
+     Use one key file to encrypt and decrypt one file, And permanently remove/destroy it after use,
+     There is good tools to do that, e.g.: shred, secure-delete, ...
+     Create new cryptographically secure pseudo-random bytes file for each file you will encrypt.
+
+
+9.
+- Q: How much the KEY_FILE size should be?
+- A: KEY_FILE must be greater than or equal to IN_FILE (KEY_FILE >= IN_FILE),
+     Read FAQ number 4 and 5.
+
+
+10.
+- Q: How i can get a 50MB random bytes key in a file?
+- A: Use OpenSSL cryptographically secure pseudo-random number generator (CSPRNG):
+         $ openssl rand -out <FILE NAME> <FILE SIZE IN BYTES>
+     If like to use your Intel Digital Random Number Generator (NOTE: Not all CPUs have it):
+         $ openssl rand -engine rdrand -out <FILE NAME> <FILE SIZE IN BYTES>
+     
+     Or get the random bytes from /dev/urandom or /dev/random .
+
+
+11.
+- Q: Can fxor work with big binary files (e.g.: 50GB)?
+- A: Yes.

@@ -1,0 +1,100 @@
+FXOR(1)                                                                                                       FXOR(1)
+
+
+
+NAME
+       fxor - a small utility to encrypt a file content with a key in file using XOR
+
+
+SYNOPSIS
+       fxor IN_FILE KEY_FILE
+       fxor IN_FILE KEY_FILE OUT_FILE [OPTION]
+
+       Display usage information:
+            fxor --help
+
+       Display version and copyright information:
+            fxor --version
+
+
+DESCRIPTION
+       fxor is a tool that you can use to encrypt/decrypt IN_FILE content
+       with KEY_FILE content using XOR cipher, and output to:
+            o  The file OUT_FILE
+            o  STDOUT if OUT_FILE not defined.
+
+       fxor can be used as OTP (One-Time Pad) tool.
+
+
+       IN_FILE
+              Input file name, Witch will processed.
+
+
+       KEY_FILE
+              Key file name, Usually random bytes file.
+
+
+       OUT_FILE
+              Output file name.
+
+
+OPTIONS
+       --overwrite, -r
+              Overwrite (destroy contents) OUT_FILE then output
+
+       --output-to-beginning, -s
+              Start output from OUT_FILE beginning and replace bytes,
+              Perfect to encrypt/decrypt IN_FILE and output to IN_FILE!.
+
+       --ask, -i
+              Ask before change OUT_FILE contents
+
+
+EXAMPLES
+       Output to OUT_FILE (overwrite if exist):
+            fxor IN_FILE KEY_FILE OUT_FILE -r
+
+       Output to OUT_FILE and replace byte by byte from beginning:
+            fxor IN_FILE KEY_FILE OUT_FILE -s
+
+       Ask before change OUT_FILE contents:
+            fxor IN_FILE KEY_FILE OUT_FILE -i
+            fxor IN_FILE KEY_FILE OUT_FILE -i -r
+            fxor IN_FILE KEY_FILE OUT_FILE -i -s
+
+       Output to STDOUT:
+            fxor IN_FILE KEY_FILE
+
+
+EXIT STATUS
+       0      EX_OK - successful termination
+
+       64     EX_USAGE - invalid command line usage
+
+       66     EX_NOINPUT - cannot open input (e.g., files permissions)
+
+       74     EX_IOERR - error while doing I/O (e.g., no free space left)
+
+       80     FXOR_EX_ABORT - fxor abort
+
+       81     EX_NOKEY - key file is empty
+
+
+AUTHOR
+       Written by Abderraouf Adjal.
+
+
+REPORTING BUGS
+       Report fxor bugs to: <abderraouf.adjal@gmail.com>
+
+
+COPYRIGHT
+       Copyright (c) 2014 Abderraouf Adjal. All rights reserved.
+
+       License: BSD 2-Clause License ('Simplified BSD License' or 'FreeBSD License'). There is NO WARRANTY.
+
+       See the file 'COPYING' for details.
+
+
+
+fxor 0.1                                               10-2014                                                FXOR(1)
