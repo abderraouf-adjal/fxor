@@ -1,14 +1,13 @@
 # Make file for POSIX compatible OSs with C99 GCC-compatible compiler
 
 CC = cc
-CFLAGS = -std=c99 -O2 -funroll-loops
-CWARNINGS = -Wall -Wextra -Wformat=2 -Wstrict-prototypes -Wdeclaration-after-statement -Wconversion -Wsign-conversion -Winit-self -pedantic
-#LIBS = 
+CWARNS = -Wall -Wextra -Wformat=2 -Wstrict-prototypes -Wdeclaration-after-statement -Wconversion -Wsign-conversion -Winit-self -pedantic
+CFLAGS = $(CWARNS) -std=c99 -O2 -funroll-loops
 
 RM = rm -f
 CP = cp -f
-INSTALL = install -C
 CD = cd
+INSTALL = install -C
 CHMOD = chmod
 
 NFP = 644
@@ -51,23 +50,23 @@ FXOR_DOCS = AUTHORS ChangeLog COPYING FAQ NEWS README
 
 # Main target
 $(TGT)$(FXOR_EXEC_NAME): $(FXOR_OBJS)
-	$(CC) $(CWARNINGS) $(CFLAGS) $(FXOR_OBJS) -o $(TGT)$(FXOR_EXEC_NAME)
+	$(CC) $(CFLAGS) $(FXOR_OBJS) -o $(TGT)$(FXOR_EXEC_NAME)
 	$(CP) $(FXOR_DOCS) $(DOC_SRC_DIR)
 
 $(SRC_DIR)$(MAIN_OBJ): $(SRC_DIR)$(MAIN_SRC)
-	$(CD) $(SRC_DIR) && $(CC) -c $(CWARNINGS) $(CFLAGS) $(MAIN_SRC) -o $(MAIN_OBJ)
+	$(CD) $(SRC_DIR) && $(CC) -c $(CFLAGS) $(MAIN_SRC) -o $(MAIN_OBJ)
 
 $(SRC_DIR)$(FXOR_OBJ): $(SRC_DIR)$(FXOR_SRC)
-	$(CD) $(SRC_DIR) && $(CC) -c $(CWARNINGS) $(CFLAGS) $(FXOR_SRC) -o $(FXOR_OBJ)
+	$(CD) $(SRC_DIR) && $(CC) -c $(CFLAGS) $(FXOR_SRC) -o $(FXOR_OBJ)
 
 $(SRC_DIR)$(IS_EMPTY_STREAM_OBJ): $(SRC_DIR)$(IS_EMPTY_STREAM_SRC)
-	$(CD) $(SRC_DIR) && $(CC) -c $(CWARNINGS) $(CFLAGS) $(IS_EMPTY_STREAM_SRC) -o $(IS_EMPTY_STREAM_OBJ)
+	$(CD) $(SRC_DIR) && $(CC) -c $(CFLAGS) $(IS_EMPTY_STREAM_SRC) -o $(IS_EMPTY_STREAM_OBJ)
 
 $(SRC_DIR)$(FXOR_STREAM_XOR_OBJ): $(SRC_DIR)$(FXOR_STREAM_XOR_SRC)
-	$(CD) $(SRC_DIR) && $(CC) -c $(CWARNINGS) $(CFLAGS) $(FXOR_STREAM_XOR_SRC) -o $(FXOR_STREAM_XOR_OBJ)
+	$(CD) $(SRC_DIR) && $(CC) -c $(CFLAGS) $(FXOR_STREAM_XOR_SRC) -o $(FXOR_STREAM_XOR_OBJ)
 
 $(SRC_DIR)$(Y_OR_N_OBJ): $(SRC_DIR)$(Y_OR_N_SRC)
-	$(CD) $(SRC_DIR) && $(CC) -c $(CWARNINGS) $(CFLAGS) $(Y_OR_N_SRC) -o $(Y_OR_N_OBJ)
+	$(CD) $(SRC_DIR) && $(CC) -c $(CFLAGS) $(Y_OR_N_SRC) -o $(Y_OR_N_OBJ)
 
 
 install:
