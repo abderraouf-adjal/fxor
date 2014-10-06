@@ -1,5 +1,5 @@
 /* main.c */
-/* fxor - encrypt a file content with a key in file using XOR */
+/* fxor - A small utility to encrypt/decrypt a file using XOR cipher to do One-Time Pad */
 /* 
  * Copyright (c) 2014, Abderraouf Adjal
  * All rights reserved.
