@@ -75,5 +75,5 @@ fxor FAQ
 
 
 12.
-- Q: is fxor add any data that are not cipher text/plain text in the output?
+- Q: Is fxor add any data that are not cipher text/plain text in the output?
 - A: No.
