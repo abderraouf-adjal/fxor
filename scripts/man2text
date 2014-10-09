@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Get complex one from: http://www.timedicer.co.uk/programs/help/man2text.sh.php
-
-man $* | sed -r 's/\d027\[[0-9]+m//g'
