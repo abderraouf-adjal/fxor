@@ -12,15 +12,15 @@ CHMOD = chmod
 
 NFP = 644
 
-SRC_DIR = src/
-TGT = bin/
-MAN_SRC_DIR = man/
-DOC_SRC_DIR = doc/fxor
-
 PREFIX = /usr
 BIN_DIR = $(PREFIX)/bin/
 MAN_DIR = $(PREFIX)/share/man/man1/
 DOC_DIR = $(PREFIX)/share/doc/fxor
+
+SRC_DIR = src/
+TGT = bin/
+MAN_SRC_DIR = man/
+DOC_SRC_DIR = doc/fxor
 
 
 # Files
@@ -77,9 +77,6 @@ install:
 	$(INSTALL) -d -D $(DOC_SRC_DIR) $(DOC_DIR)
 	$(INSTALL) -m $(NFP) -D $(DOC_SRC_DIR)/* $(DOC_DIR)
 
-
-# Phony means not a "real" target, it doesn't build anything
-# The phony target "clean" is used to remove all compiled object files.
 
 .PHONY: clean
 
