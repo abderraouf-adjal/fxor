@@ -28,8 +28,9 @@
 
 
 #include <stdio.h>
-#include <sysexits.h>
 #include <err.h>
+
+#include "fxor_exits.h"
 
 
 /**

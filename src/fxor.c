@@ -31,9 +31,9 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdbool.h>
-#include <sysexits.h>
 #include <err.h>
 
+#include "fxor_exits.h"
 #include "fxor.h"
 #include "fxor_stream_xor.h"
 

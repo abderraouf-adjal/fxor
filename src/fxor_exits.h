@@ -31,6 +31,9 @@
 #define _FXOR_EXITS_H
 
 
+#include <sysexits.h>
+
+
 #ifndef FXOR_EX_ABORT
 # define FXOR_EX_ABORT 80
 #endif

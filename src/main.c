@@ -31,11 +31,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include <sysexits.h>
 #include <err.h>
 
 #include "fxor_exits.h"
-#include "fxor.h"	/* fxor.h include stdbool.h too */
+#include "fxor.h"	/* fxor.h include stdbool.h */
 #include "y_or_n.h"
 
 
