@@ -77,9 +77,12 @@ int fxor_stream_xor(FILE *in_s, FILE *key_s, FILE *out_s,
 		if (is_empty_stream_r == 1)
 		{
 			warnx("ERROR: '%s' is empty.", key_n);
+			return EX_NOKEY;
 		}
-		
-		return is_empty_stream_r; /* EX_NOKEY, EX_IOERR, ... */
+		else
+		{
+			return EX_IOERR;
+		}
 	}
 	
 	
