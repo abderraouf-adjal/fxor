@@ -1,8 +1,10 @@
 # Make file for POSIX compatible OSs with C99 GCC-compatible compiler
 
 CC = cc
+OPTIMIZATION = -O2 -funroll-loops
+STD = -std=c99
 CWARNS = -Wall -Wextra -Wformat=2 -Wstrict-prototypes -Wdeclaration-after-statement -Wconversion -Wsign-conversion -Winit-self -pedantic
-CFLAGS = $(CWARNS) -std=c99 -O2 -funroll-loops
+CFLAGS = $(CWARNS) $(STD) $(OPTIMIZATION)
 
 RM = rm -f
 CP = cp -f

@@ -89,11 +89,19 @@ Installation
 	Compile:
 		% make
 	
+	
 	Install:
 		% make install
+		
+		You can install/copy files in a different destination:
+		% make PREFIX="/directory/directory" install
+	
 	
 	Uninstall:
 		% make uninstall
+		
+		Or:
+		% make PREFIX="/directory/directory" uninstall
 
 
 Version
