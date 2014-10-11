@@ -30,15 +30,13 @@
 #include <stdio.h>
 #include <err.h>
 
-#include "fxor_exits.h"
-
 
 /**
  * is_empty_stream()
  * 
  * Need stream name to show error messages
  * 
- * Return:  0: Not empty; 1: Empty; EX_IOERR: I/O Error
+ * Return:  0: Not empty; 1: Empty; -1: I/O Error
  */
 
 int is_empty_stream(FILE *s, const char *s_name)
@@ -56,7 +54,7 @@ int is_empty_stream(FILE *s, const char *s_name)
 			if (fseek(s, 0, SEEK_END))
 			{
 				warn("%s: %s", __func__, s_name);
-				return EX_IOERR;
+				return -1;
 			}
 		}
 	}
@@ -65,13 +63,13 @@ int is_empty_stream(FILE *s, const char *s_name)
 		if (fseek(s, -1, SEEK_CUR))
 		{
 			warn("%s: %s", __func__, s_name);
-			return EX_IOERR;
+			return -1;
 		}
 	}
 	else if (ferror(s))
 	{
 		warn("%s: %s", __func__, s_name);
-		return EX_IOERR;
+		return -1;
 	}
 	
 	return 0; /* Not empty */
