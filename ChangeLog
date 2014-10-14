@@ -1,3 +1,14 @@
-0.1 _ 09-2014
-==============
-- first useable version
+From 0.1 to 0.1.1 _ 2014-10-14
+==============================
+- FIXED BUGS:
+* Fix fxor_stream_xor() in <src/fxor_stream_xor.c> return wrong number when the key is empty.
+
+- OPTIMIZATIONS:
+* Reduce hearders dependencies in <src/is_empty_stream.c>
+* Tiny optimizations in fxor docs.
+* Other optimizations and tiny bugs fixing...
+
+
+0.1 _ 2014-09
+=============
+* first useable version

@@ -35,7 +35,7 @@
 
 
 #ifndef FXOR_VERSION
-# define FXOR_VERSION "0.1"
+# define FXOR_VERSION "0.1.1"
 #endif
 
 #ifndef FXOR_COPYING
