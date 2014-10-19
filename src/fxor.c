@@ -95,30 +95,6 @@ int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from
 	}
 	
 	
-	/* Read test */
-	/*
-	if (fgetc(in_f));
-	if (fgetc(key_f));
-	
-	if (ferror(in_f) || ferror(key_f))
-	{
-		if (ferror(in_f))
-		{
-			warn("%s", in_n);
-		}
-		if (ferror(key_f))
-		{
-			warn("%s", key_n);
-		}
-		
-		return EX_IOERR;
-	}
-	
-	rewind(in_f);
-	rewind(key_f);
-	*/
-	
-	
 	if (out_n != NULL)
 	{ /* output to a file */
 		out_f = write_from_beginning == true ? fopen(out_n, "rb+") : fopen(out_n, "wb");
