@@ -62,15 +62,13 @@ Usage:\n\
 Description:\n\
   fxor is a tool that you can use to encrypt/decrypt IN_FILE content\n\
   with KEY_FILE content using XOR cipher, and output to:\n\
-    o  The file OUT_FILE\n\
+    o  The file OUT_FILE.\n\
     o  STDOUT if OUT_FILE not defined.\n\
 \n\
   fxor can be used as OTP (One-Time Pad) tool.\n\
 \n\
   IN_FILE: Input file name, Witch will processed.\n\
-\n\
   KEY_FILE: Key file name, Usually random bytes file.\n\
-\n\
   OUT_FILE: Output file name.\n\
 \n\
 Options:\n\

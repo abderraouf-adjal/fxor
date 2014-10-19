@@ -1,5 +1,6 @@
 fxor
 ====
+--------------------------------
 
 ## Overview
 
@@ -25,10 +26,10 @@ Display version and copyright information:
 fxor is a tool that you can use to encrypt/decrypt **IN_FILE** content
 with **KEY_FILE** content using XOR cipher, and output to:
 
-*  The file **OUT_FILE**
+*  The file **OUT_FILE**.
 *  *STDOUT* if **OUT_FILE** not defined.
 
-fxor can be used as OTP (One-Time Pad) tool.
+fxor can be used as [OTP (One-Time Pad)](http://en.wikipedia.org/wiki/One-time_pad) tool.
 
 **IN_FILE**: Input file name, Witch will processed.
 
@@ -39,15 +40,15 @@ fxor can be used as OTP (One-Time Pad) tool.
 
 ## Options
 
-**--overwrite**, ** -r**
-	Overwrite (destroy contents) **OUT_FILE** then output
+`--overwrite`, `-r`:
+Overwrite (destroy contents) **OUT_FILE** then output
 
-**--output-to-beginning**, **-s**
-	Start output from **OUT_FILE** beginning and replace bytes,
-	Perfect to encrypt/decrypt **IN_FILE** and output to **IN_FILE**!.
+`--output-to-beginning`, `-s`:
+Start output from **OUT_FILE** beginning and replace bytes,
+Perfect to encrypt/decrypt **IN_FILE** and output to **IN_FILE**!.
 
-**--ask**, **-i**
-	Ask before change **OUT_FILE** contents
+`--ask`, `-i`:
+Ask before change **OUT_FILE** contents
 
 
 ## Examples
@@ -66,7 +67,7 @@ Ask before change **OUT_FILE** contents:
 	fxor IN_FILE KEY_FILE OUT_FILE -i -r
 	fxor IN_FILE KEY_FILE OUT_FILE -i -s
 
-Output to STDOUT:
+Output to *STDOUT*:
 
 	fxor IN_FILE KEY_FILE
 

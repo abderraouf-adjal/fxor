@@ -23,7 +23,7 @@ Description
 	
 	fxor is a tool that you can use to encrypt/decrypt IN_FILE content
 	with KEY_FILE content using XOR cipher, and output to:
-		o  The file OUT_FILE
+		o  The file OUT_FILE.
 		o  STDOUT if OUT_FILE not defined.
 	
 	fxor can be used as OTP (One-Time Pad) tool.
@@ -67,11 +67,22 @@ Examples
 		fxor IN_FILE KEY_FILE
 
 
+Versioning
+----------
+
+	fxor follows the [semantic versioning](http://semver.org) scheme.
+
+
+fxor releases
+-------------
+
+	o fxor v0.1.1: https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.1
+
 fxor on GitHub
 --------------
-https://github.com/abderraouf-adjal/fxor
 
-https://github.com/abderraouf-adjal/fxor.git
+	https://github.com/abderraouf-adjal/fxor
+	https://github.com/abderraouf-adjal/fxor.git
 
 
 Requirements
