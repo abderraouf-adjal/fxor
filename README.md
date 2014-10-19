@@ -117,8 +117,9 @@ Or:
 
 ## Reporting bugs
 
-Report fxor bugs to: <abderraouf.adjal@gmail.com>
-Or create an issue: [fxor GitHub issues page](https://github.com/abderraouf-adjal/fxor/issues).
+Report fxor bugs to: <abderraouf.adjal@gmail.com>.
+
+Or create an issue, [fxor GitHub issues page](https://github.com/abderraouf-adjal/fxor/issues).
 
 ## Copyright
 

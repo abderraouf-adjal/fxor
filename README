@@ -1,7 +1,6 @@
 fxor
 ====
 
-
 fxor - a tool to encrypt/decrypt a file using XOR cipher to do one-time pad
 
 
@@ -69,20 +68,19 @@ Examples
 
 Versioning
 ----------
-
+	
 	fxor follows the [semantic versioning](http://semver.org) scheme.
 
 
 fxor releases
 -------------
-
+	
 	o fxor v0.1.1: https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.1
 
 fxor on GitHub
 --------------
-
-	https://github.com/abderraouf-adjal/fxor
-	https://github.com/abderraouf-adjal/fxor.git
+	
+	<https://github.com/abderraouf-adjal/fxor>
 
 
 Requirements
@@ -124,7 +122,9 @@ Version
 Reporting bugs
 --------------
 	
-	Report fxor bugs to: <abderraouf.adjal@gmail.com>
+	Report fxor bugs to: <abderraouf.adjal@gmail.com>.
+	
+	Or create an issue, fxor GitHub issues page: <https://github.com/abderraouf-adjal/fxor/issues>.
 
 
 Copyright
