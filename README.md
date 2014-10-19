@@ -26,20 +26,20 @@ fxor is a tool that you can use to encrypt/decrypt **IN_FILE** content
 with **KEY_FILE** content using XOR cipher, and output to:
 
 *  The file **OUT_FILE**
-*  **STDOUT** if **OUT_FILE** not defined.
+*  *STDOUT* if **OUT_FILE** not defined.
 
 fxor can be used as OTP (One-Time Pad) tool.
 
 **IN_FILE**: Input file name, Witch will processed.
-* * *
+
 **KEY_FILE**: Key file name, Usually random bytes file.
-* * *
+
 **OUT_FILE**: Output file name.
 
 
 ## Options
 
-**--overwrite**,** -r**
+**--overwrite**, ** -r**
 	Overwrite (destroy contents) **OUT_FILE** then output
 
 **--output-to-beginning**, **-s**
@@ -92,12 +92,12 @@ unix-like OS, e.g.: GNU/Linux, *BSD.
 
 After you unpack the distribution tarball and change into the source directory:
 
-### Compile:
+#### Compile:
 
 	% make
 
 
-### Install:
+#### Install:
 
 	% make install
 	
@@ -106,7 +106,7 @@ You can install/copy files in a different destination:
 	% make PREFIX="/directory/directory" install
 
 
-### Uninstall:
+#### Uninstall:
 
 	% make uninstall
 	
