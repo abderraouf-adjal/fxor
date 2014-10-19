@@ -109,7 +109,7 @@ You can install/copy files in a different destination:
 #### Uninstall:
 
 	% make uninstall
-	
+
 Or:
 
 	% make PREFIX="/directory/directory" uninstall
