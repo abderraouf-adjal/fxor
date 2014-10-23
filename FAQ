@@ -36,8 +36,8 @@ fxor FAQ
 
 6.
 - Q: For what is the options '--output-to-beginning, -s'?
-- A: If you have a 4GB file in a 4GB flash-disk you can
-     encrypt/decrypt it on the same file and the disk!
+- A: If you have a 4GB file in a 4GB USB flash drive,
+     You can encrypt/decrypt it on the same file and the disk!
 
 
 7.
