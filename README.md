@@ -100,7 +100,7 @@ After you unpack the distribution tarball and change into the source directory:
 #### Install:
 
 	% make install
-	
+
 You can install/copy files in a different destination:
 
 	% make PREFIX="/directory/directory" install
@@ -119,7 +119,8 @@ Or:
 
 Report fxor bugs to: <abderraouf.adjal@gmail.com>.
 
-Or create an issue, [fxor GitHub issues page](https://github.com/abderraouf-adjal/fxor/issues).
+Or [create an issue on GitHub](https://github.com/abderraouf-adjal/fxor/issues).
+
 
 ## Copyright
 

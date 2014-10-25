@@ -29,10 +29,10 @@
 *.i*86
 *.x86_64
 *.hex
+*.bin
 
 
-# OS generated files #
-######################
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
