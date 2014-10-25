@@ -40,8 +40,9 @@
 
 #ifndef FXOR_COPYING
 # define FXOR_COPYING "\
-Copyright (c) 2014 Abderraouf Adjal. All rights reserved.\n\
-License: BSD 2-Clause License ('Simplified BSD License' or 'FreeBSD License'). There is NO WARRANTY.\n\
+Copyright (c) 2014 Abderraouf Adjal.  All rights reserved.\n\
+License: BSD 2-Clause License ('Simplified BSD License' or 'FreeBSD License').\n\
+There is NO WARRANTY.\n\
 See the file 'COPYING' for details.\n"
 #endif
 
@@ -82,7 +83,8 @@ Options:\n\
   --ask, -i\n\
       Ask before change OUT_FILE contents\n\
 \n\
-Report fxor bugs to: <abderraouf.adjal@gmail.com>\n"
+Report fxor bugs to: <abderraouf.adjal@gmail.com>\n\
+Or create an issue on GitHub: <https://github.com/abderraouf-adjal/fxor/issues>\n"
 #endif
 
 #ifndef INVALID_CMD_USAGE_STR

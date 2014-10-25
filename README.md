@@ -117,14 +117,14 @@ Or:
 
 ## Reporting bugs
 
-Report fxor bugs to: <abderraouf.adjal@gmail.com>.
+Report fxor bugs to: <abderraouf.adjal@gmail.com>
 
 Or [create an issue on GitHub](https://github.com/abderraouf-adjal/fxor/issues).
 
 
 ## Copyright
 
-Copyright (c) 2014 [Abderraouf Adjal](https://github.com/abderraouf-adjal). All rights reserved.
+Copyright (c) 2014 [Abderraouf Adjal](https://github.com/abderraouf-adjal).  All rights reserved.
 
 License: [BSD 2-Clause License ('Simplified BSD License' or 'FreeBSD License')](http://opensource.org/licenses/BSD-2-Clause). There is NO WARRANTY.
 
