@@ -81,6 +81,11 @@ fxor follows the [semantic versioning](http://semver.org) scheme.
 * [fxor v0.1.1](https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.1)
 
 
+## fxor FAQ
+
+See the file '[FAQ](https://github.com/abderraouf-adjal/fxor/blob/master/FAQ)' for details.
+
+
 ## Requirements
 
 C99 GCC-compatible compiler, e.g.: gcc, clang.

@@ -63,8 +63,8 @@ Usage:\n\
 Description:\n\
   fxor is a tool that you can use to encrypt/decrypt IN_FILE content\n\
   with KEY_FILE content using XOR cipher, and output to:\n\
-    o  The file OUT_FILE.\n\
-    o  STDOUT if OUT_FILE not defined.\n\
+    * The file OUT_FILE.\n\
+    * STDOUT if OUT_FILE not defined.\n\
 \n\
   fxor can be used as OTP (One-Time Pad) tool.\n\
 \n\
