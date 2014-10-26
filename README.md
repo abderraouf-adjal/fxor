@@ -3,7 +3,7 @@ fxor
 
 ## Overview
 
-**fxor** is a tool to encrypt/decrypt a file using [XOR cipher](http://en.wikipedia.org/wiki/XOR_cipher) to do [one-time pad](http://en.wikipedia.org/wiki/One-time_pad).
+**fxor** is a tool to encrypt/decrypt a file using [XOR operation](http://en.wikipedia.org/wiki/XOR_cipher) to do [one-time pad](http://en.wikipedia.org/wiki/One-time_pad).
 
 
 ## Syntax

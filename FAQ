@@ -10,7 +10,7 @@ fxor FAQ
 
 2.
 - Q: How fxor secure my data?
-- A: fxor secure your data by encrypting the content using XOR cipher,
+- A: fxor secure your data by encrypting the content using XOR operation,
      and you can use it as one-time pad (OTP) tool.
 
 

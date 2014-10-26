@@ -48,7 +48,7 @@ See the file 'COPYING' for details.\n"
 
 #ifndef FXOR_USAGE
 # define FXOR_USAGE "\
-fxor - a tool to encrypt/decrypt a file using XOR cipher to do one-time pad\n\
+fxor - a tool to encrypt/decrypt a file using XOR operation to do one-time pad\n\
 \n\
 Usage:\n\
   fxor IN_FILE KEY_FILE\n\
