@@ -23,7 +23,7 @@ Display version and copyright information:
 ## Description
 
 fxor is a tool that you can use to encrypt/decrypt **IN_FILE** content
-with **KEY_FILE** content using XOR cipher, and output to:
+with **KEY_FILE** content using XOR operation, and output to:
 
 *  The file **OUT_FILE**.
 *  *STDOUT* if **OUT_FILE** not defined.

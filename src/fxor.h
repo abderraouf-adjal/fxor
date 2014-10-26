@@ -62,7 +62,7 @@ Usage:\n\
 \n\
 Description:\n\
   fxor is a tool that you can use to encrypt/decrypt IN_FILE content\n\
-  with KEY_FILE content using XOR cipher, and output to:\n\
+  with KEY_FILE content using XOR operation, and output to:\n\
     * The file OUT_FILE.\n\
     * STDOUT if OUT_FILE not defined.\n\
 \n\
