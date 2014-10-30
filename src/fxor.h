@@ -78,7 +78,7 @@ Options:\n\
 \n\
   --output-to-beginning, -s\n\
       Start output from OUT_FILE beginning and replace bytes,\n\
-      Perfect to encrypt/decrypt IN_FILE and output to IN_FILE!.\n\
+      Perfect to encrypt/decrypt IN_FILE and output to IN_FILE!\n\
 \n\
   --ask, -i\n\
       Ask before change OUT_FILE contents\n\

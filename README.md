@@ -44,7 +44,7 @@ Overwrite (destroy contents) **OUT_FILE** then output
 
 `--output-to-beginning`, `-s`:
 Start output from **OUT_FILE** beginning and replace bytes,
-Perfect to encrypt/decrypt **IN_FILE** and output to **IN_FILE**!.
+Perfect to encrypt/decrypt **IN_FILE** and output to **IN_FILE**!
 
 `--ask`, `-i`:
 Ask before change **OUT_FILE** contents
