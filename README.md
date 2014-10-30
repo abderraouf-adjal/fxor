@@ -131,6 +131,6 @@ Or [create an issue on GitHub](https://github.com/abderraouf-adjal/fxor/issues).
 
 Copyright (c) 2014 [Abderraouf Adjal](https://github.com/abderraouf-adjal).  All rights reserved.
 
-License: [BSD 2-Clause License ('Simplified BSD License' or 'FreeBSD License')](http://opensource.org/licenses/BSD-2-Clause). There is NO WARRANTY.
+License: [BSD 2-Clause License (Simplified BSD License)](http://opensource.org/licenses/BSD-2-Clause). There is NO WARRANTY.
 
 See the file '[COPYING](https://github.com/abderraouf-adjal/fxor/blob/master/COPYING)' for details.

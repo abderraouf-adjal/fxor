@@ -41,7 +41,7 @@
 #ifndef FXOR_COPYING
 # define FXOR_COPYING "\
 Copyright (c) 2014 Abderraouf Adjal.  All rights reserved.\n\
-License: BSD 2-Clause License ('Simplified BSD License' or 'FreeBSD License').\n\
+License: BSD 2-Clause License (Simplified BSD License).\n\
 There is NO WARRANTY.\n\
 See the file 'COPYING' for details.\n"
 #endif
