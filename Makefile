@@ -27,6 +27,7 @@ DOC_SRC_DIR = doc/fxor
 
 # Files
 FXOR_EXEC_NAME = fxor
+OPSSL_RAND_SCRIPT = scripts/opssl_rand.sh
 
 MAIN_SRC = main.c
 MAIN_OBJ = main.o
@@ -74,6 +75,8 @@ $(SRC_DIR)$(Y_OR_N_OBJ): $(SRC_DIR)$(Y_OR_N_SRC)
 install:
 	$(INSTALL) -D $(TGT)$(FXOR_EXEC_NAME) $(BIN_DIR)
 	
+	$(INSTALL) -D $(OPSSL_RAND_SCRIPT) $(BIN_DIR)
+	
 	$(INSTALL) -m $(NFP) -D $(MAN_SRC_DIR)$(FXOR_MAN) $(MAN_DIR)
 	
 	$(INSTALL) -d -D $(DOC_SRC_DIR) $(DOC_DIR)
@@ -90,5 +93,6 @@ clean:
 
 uninstall:
 	$(RM) $(BIN_DIR)$(FXOR_EXEC_NAME)
+	$(RM) $(BIN_DIR)$(OPSSL_RAND_SCRIPT)
 	$(RM) $(MAN_DIR)$(FXOR_MAN)
 	$(RM) -r $(DOC_DIR)
