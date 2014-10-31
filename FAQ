@@ -67,6 +67,10 @@ fxor FAQ
      If like to use your Intel Digital Random Number Generator (NOTE: Not all CPUs have it):
          $ openssl rand -engine rdrand -out <FILE NAME> <FILE SIZE IN BYTES>
      Or get the random bytes from /dev/urandom or /dev/random .
+     
+     You can use 'scripts/opssl_rand.sh' to get random bytes file
+     its size equal to <IN FILE> and output to <RANDOM KEY FILE>:
+         $ ./opssl_rand.sh <IN FILE> <RANDOM KEY FILE>
 
 
 11.
