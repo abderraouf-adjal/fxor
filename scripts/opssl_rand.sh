@@ -16,6 +16,6 @@ if ! [ "$#" -eq 2 ]; then
 	exit 64;
 fi
 
-openssl_rand_cmd="`stat \"$1\" --format=\"openssl rand %s -out \"$2\"\"`"
+openssl_rand_cmd="`stat \"$1\" --format=\"openssl rand %s -out '$2'\"`"
 
 eval $openssl_rand_cmd
