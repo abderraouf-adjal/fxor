@@ -78,6 +78,7 @@ fxor follows the [semantic versioning](http://semver.org) scheme.
 
 ## fxor releases
 
+* [fxor v0.1.2](https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.2)
 * [fxor v0.1.1](https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.1)
 
 

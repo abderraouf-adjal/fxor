@@ -1,3 +1,16 @@
+From 0.1.1 to 0.1.2 _ 2014-11-01
+==============================
+- NEW:
+* Add README.md
+* Add scripts/opssl_rand.sh; the script take IN_FILE_NAME size and run openssl command
+	to make a random file (OUT_FILE_NAME), So OUT_FILE_NAME_SIZE = IN_FILE_NAME_SIZE
+
+- OPTIMIZATIONS:
+* Remove unused code "Read 1 byte test from streams in_f and key_f" in <src/fxor.c>
+* Update fxor description
+* Tiny optimizations in fxor docs.
+
+
 From 0.1 to 0.1.1 _ 2014-10-14
 ==============================
 - FIXED BUGS:
