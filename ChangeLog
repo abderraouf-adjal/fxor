@@ -1,5 +1,5 @@
 From 0.1.1 to 0.1.2 _ 2014-11-01
-==============================
+================================
 - NEW:
 * Add README.md
 * Add scripts/opssl_rand.sh; the script take IN_FILE_NAME size and run openssl command
