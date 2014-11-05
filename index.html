@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>fxor by abderraouf-adjal</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>fxor</h1>
+        <h2>A tool to encrypt/decrypt a file using XOR operation to do One-Time Pad</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/abderraouf-adjal/fxor/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/abderraouf-adjal/fxor/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/abderraouf-adjal/fxor" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="fxor" class="anchor" href="#fxor" aria-hidden="true"><span class="octicon octicon-link"></span></a>fxor</h1>
+
+<h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
+
+<p><strong>fxor</strong> is a tool to encrypt/decrypt a file using <a href="http://en.wikipedia.org/wiki/XOR_cipher">XOR operation</a> to do <a href="http://en.wikipedia.org/wiki/One-time_pad">one-time pad</a>.</p>
+
+<hr>
+
+<h2>
+<a id="syntax" class="anchor" href="#syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Syntax</h2>
+
+<pre><code>fxor IN_FILE KEY_FILE
+fxor IN_FILE KEY_FILE OUT_FILE [OPTION]
+</code></pre>
+
+<p>Display usage information:</p>
+
+<pre><code>fxor --help
+</code></pre>
+
+<p>Display version and copyright information:</p>
+
+<pre><code>fxor --version
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h2>
+
+<p>fxor is a tool that you can use to encrypt/decrypt <strong>IN_FILE</strong> content
+with <strong>KEY_FILE</strong> content using XOR operation, and output to:</p>
+
+<ul>
+<li> The file <strong>OUT_FILE</strong>.</li>
+<li> <em>STDOUT</em> if <strong>OUT_FILE</strong> not defined.</li>
+</ul>
+
+<p>fxor can be used as <a href="http://en.wikipedia.org/wiki/One-time_pad">OTP (One-Time Pad)</a> tool.</p>
+
+<p><strong>IN_FILE</strong>: Input file name, Witch will processed.</p>
+
+<p><strong>KEY_FILE</strong>: Key file name, Usually random bytes file.</p>
+
+<p><strong>OUT_FILE</strong>: Output file name.</p>
+
+<hr>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p><code>--overwrite</code>, <code>-r</code>:
+Overwrite (destroy contents) <strong>OUT_FILE</strong> then output</p>
+
+<p><code>--output-to-beginning</code>, <code>-s</code>:
+Start output from <strong>OUT_FILE</strong> beginning and replace bytes,
+Perfect to encrypt/decrypt <strong>IN_FILE</strong> and output to <strong>IN_FILE</strong>!</p>
+
+<p><code>--ask</code>, <code>-i</code>:
+Ask before change <strong>OUT_FILE</strong> contents</p>
+
+<hr>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>Output to <strong>OUT_FILE</strong> (overwrite if exist):</p>
+
+<pre><code>fxor IN_FILE KEY_FILE OUT_FILE -r
+</code></pre>
+
+<p>Output to <strong>OUT_FILE</strong> and replace byte by byte from beginning:</p>
+
+<pre><code>fxor IN_FILE KEY_FILE OUT_FILE -s
+</code></pre>
+
+<p>Ask before change <strong>OUT_FILE</strong> contents:</p>
+
+<pre><code>fxor IN_FILE KEY_FILE OUT_FILE -i
+fxor IN_FILE KEY_FILE OUT_FILE -i -r
+fxor IN_FILE KEY_FILE OUT_FILE -i -s
+</code></pre>
+
+<p>Output to <em>STDOUT</em>:</p>
+
+<pre><code>fxor IN_FILE KEY_FILE
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="versioning" class="anchor" href="#versioning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Versioning</h2>
+
+<p>fxor follows the <a href="http://semver.org">semantic versioning</a> scheme.</p>
+
+<hr>
+
+<h2>
+<a id="fxor-releases" class="anchor" href="#fxor-releases" aria-hidden="true"><span class="octicon octicon-link"></span></a>fxor releases</h2>
+
+<ul>
+<li><a href="https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.2">fxor v0.1.2</a></li>
+<li><a href="https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.1">fxor v0.1.1</a></li>
+</ul>
+
+<hr>
+
+<h2>
+<a id="fxor-faq" class="anchor" href="#fxor-faq" aria-hidden="true"><span class="octicon octicon-link"></span></a>fxor FAQ</h2>
+
+<p>See the file '<a href="https://github.com/abderraouf-adjal/fxor/blob/master/FAQ">FAQ</a>' for details.</p>
+
+<hr>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>C99 GCC-compatible compiler, e.g.: gcc, clang.</p>
+
+<p>unix-like OS, e.g.: GNU/Linux, *BSD.</p>
+
+<hr>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>After you unpack the distribution tarball and change into the source directory:</p>
+
+<h4>
+<a id="compile" class="anchor" href="#compile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compile:</h4>
+
+<pre><code>% make
+</code></pre>
+
+<h4>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install:</h4>
+
+<pre><code>% make install
+</code></pre>
+
+<p>You can install/copy files in a different destination:</p>
+
+<pre><code>% make PREFIX="/directory/directory" install
+</code></pre>
+
+<h4>
+<a id="uninstall" class="anchor" href="#uninstall" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uninstall:</h4>
+
+<pre><code>% make uninstall
+</code></pre>
+
+<p>Or:</p>
+
+<pre><code>% make PREFIX="/directory/directory" uninstall
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="reporting-bugs" class="anchor" href="#reporting-bugs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reporting bugs</h2>
+
+<p>Report fxor bugs to: <a href="mailto:abderraouf.adjal@gmail.com">abderraouf.adjal@gmail.com</a></p>
+
+<p>Or <a href="https://github.com/abderraouf-adjal/fxor/issues">create an issue on GitHub</a>.</p>
+
+<hr>
+
+<h2>
+<a id="copyright" class="anchor" href="#copyright" aria-hidden="true"><span class="octicon octicon-link"></span></a>Copyright</h2>
+
+<p>Copyright (c) 2014 <a href="https://github.com/abderraouf-adjal">Abderraouf Adjal</a>.  All rights reserved.</p>
+
+<p>License: <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause License (Simplified BSD License)</a>. There is NO WARRANTY.</p>
+
+<p>See the file '<a href="https://github.com/abderraouf-adjal/fxor/blob/master/COPYING">COPYING</a>' for details.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
