@@ -27,7 +27,7 @@ DOC_SRC_DIR = doc/fxor
 
 # Files
 FXOR_EXEC_NAME = fxor
-OPSSL_RAND_SCRIPT = scripts/opssl_rand.sh
+OPSSL_RAND_SCRIPT = scripts/opssl_rand
 
 MAIN_SRC = main.c
 MAIN_OBJ = main.o
