@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/env sh
 
 # for fxor (a tool to encrypt/decrypt a file using XOR operation to do one-time pad)
 
