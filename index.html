@@ -3,34 +3,32 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <meta name="google-site-verification" content="lnWF6EKrf3nWxXcfm3n2hcFRDpE6zoL_kdsULdpGU9c" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-    <title>fxor - one-time pad tool</title>
+    <title>fxor by abderraouf-adjal</title>
   </head>
 
   <body>
-
     <header>
-      <div class="container">
+      <div class="inner">
         <h1>fxor</h1>
         <h2>A tool to encrypt/decrypt a file by one-time pad</h2>
-
-        <section id="downloads">
-          <a href="https://github.com/abderraouf-adjal/fxor/archive/v0.1.2.zip" class="btn">Download fxor-0.1.2.zip</a>
-          <a href="https://github.com/abderraouf-adjal/fxor/archive/v0.1.2.tar.gz" class="btn">Download fxor-0.1.2.tar.gz</a>
-          <a href="https://github.com/abderraouf-adjal/fxor" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
+        <a href="https://github.com/abderraouf-adjal/fxor" class="button"><small>View project on</small> GitHub</a>
       </div>
     </header>
 
-    <div class="container">
-      <section id="main_content">
-        <h2>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
 <a id="welcome-to-fxor-home-page" class="anchor" href="#welcome-to-fxor-home-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to fxor home page.</h2>
 
 <blockquote>
@@ -82,15 +80,12 @@ with <strong>KEY_FILE</strong> content using XOR operation, and output to:</p>
 <h2>
 <a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
 
-<p><code>--overwrite</code>, <code>-r</code>:
+<p><code>-r</code>:
 Overwrite (destroy contents) <strong>OUT_FILE</strong> then output</p>
 
-<p><code>--output-to-beginning</code>, <code>-s</code>:
+<p><code>-s</code>:
 Start output from <strong>OUT_FILE</strong> beginning and replace bytes,
 Perfect to encrypt/decrypt <strong>IN_FILE</strong> and output to <strong>IN_FILE</strong>!</p>
-
-<p><code>--ask</code>, <code>-i</code>:
-Ask before change <strong>OUT_FILE</strong> contents</p>
 
 <hr>
 
@@ -107,13 +102,6 @@ Ask before change <strong>OUT_FILE</strong> contents</p>
 <pre><code>fxor IN_FILE KEY_FILE OUT_FILE -s
 </code></pre>
 
-<p>Ask before change <strong>OUT_FILE</strong> contents:</p>
-
-<pre><code>fxor IN_FILE KEY_FILE OUT_FILE -i
-fxor IN_FILE KEY_FILE OUT_FILE -i -r
-fxor IN_FILE KEY_FILE OUT_FILE -i -s
-</code></pre>
-
 <p>Output to <em>STDOUT</em>:</p>
 
 <pre><code>fxor IN_FILE KEY_FILE
@@ -122,16 +110,10 @@ fxor IN_FILE KEY_FILE OUT_FILE -i -s
 <hr>
 
 <h2>
-<a id="versioning" class="anchor" href="#versioning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Versioning</h2>
-
-<p>fxor follows the <a href="http://semver.org">semantic versioning</a> scheme.</p>
-
-<hr>
-
-<h2>
 <a id="fxor-releases" class="anchor" href="#fxor-releases" aria-hidden="true"><span class="octicon octicon-link"></span></a>fxor releases</h2>
 
 <ul>
+<li><a href="https://github.com/abderraouf-adjal/fxor/releases/tag/v0.2.0">fxor v0.2.0</a></li>
 <li><a href="https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.2">fxor v0.1.2</a></li>
 <li><a href="https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.1">fxor v0.1.1</a></li>
 </ul>
@@ -201,15 +183,31 @@ fxor IN_FILE KEY_FILE OUT_FILE -i -s
 <h2>
 <a id="copyright" class="anchor" href="#copyright" aria-hidden="true"><span class="octicon octicon-link"></span></a>Copyright</h2>
 
-<p>Copyright (c) 2014 <a href="https://github.com/abderraouf-adjal">Abderraouf Adjal</a>.  All rights reserved.</p>
+<p>Copyright (c) 2014-2015 <a href="https://github.com/abderraouf-adjal">Abderraouf Adjal</a>.  All rights reserved.</p>
 
 <p>License: <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause License (Simplified BSD License)</a>. There is NO WARRANTY.</p>
 
 <p>See the file '<a href="https://github.com/abderraouf-adjal/fxor/blob/master/COPYING">COPYING</a>' for details.</p>
-      </section>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/abderraouf-adjal/fxor/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/abderraouf-adjal/fxor/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/abderraouf-adjal/fxor"></a> is maintained by <a href="https://github.com/abderraouf-adjal">abderraouf-adjal</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
 
-              <script type="text/javascript">
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
