@@ -1,7 +1,7 @@
 /* main.c */
 /* fxor - A small utility to encrypt/decrypt a file using XOR cipher to do One-Time Pad */
 /* 
- * Copyright (c) 2014, Abderraouf Adjal
+ * Copyright (c) 2014-2015, Abderraouf Adjal
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -33,44 +33,27 @@
 #include <unistd.h>
 #include <err.h>
 
-#include "fxor_exits.h"
 #include "fxor.h"	/* fxor.h include stdbool.h */
-#include "y_or_n.h"
+#include "fxor_exits.h"
 
 
 int main(int argc, char *argv[])
 {
-	char *in_n = NULL, *key_n = NULL, *out_n = NULL;
-	
-	
-	if (argc >= 2)
-	{
-		in_n = argv[1];
-		
-		if (argc >= 3)
-		{
-			key_n = argv[2];
-			
-			if (argc >= 4)
-			{
-				out_n = argv[3];
-			}
-		}
-	}
-	
+	const char *in_n  = argc >= 3 ? argv[1] : NULL;
+	const char *key_n = argc >= 3 ? argv[2] : NULL;
+	const char *out_n = argc >= 4 ? argv[3] : NULL;
 	
 	if (argc == 2)
 	{
 		if (!strcmp("--help", argv[1]))
-		{
-			usage();
-			return EX_OK;
+		{ /* Print usage help */
+			fprintf(stdout, FXOR_USAGE);
+			return FXOR_EX_OK;
 		}
 		else if (!strcmp("--version", argv[1]))
 		{ /* Print version and copyright */
-			version();
-			copyright();
-			return EX_OK;
+			fprintf(stdout, "fxor version %s\n%s", FXOR_VERSION, FXOR_COPYING);
+			return FXOR_EX_OK;
 		}
 	}
 	else if (argc == 3)
@@ -80,106 +63,28 @@ int main(int argc, char *argv[])
 	else if (argc == 4)
 	{
 		if (access(out_n, F_OK))
-		{ /* NOT exist */
+		{ /* If out_n NOT exist */
 			return fxor(in_n, key_n, out_n, false);
 		}
 		else
 		{
-			warnx(FILE_EXIST_WARN, out_n);
-			warnx(FXOR_ABORT_STR);
+			warnx("WARNING: '%s' is exist", out_n);
+			warnx("Abort.");
 			return FXOR_EX_ABORT;
 		}
 	}
 	else if (argc == 5)
 	{
-		if (!strcmp("--overwrite", argv[4]) || !strcmp("-r", argv[4]))
-		{ /* Overwrite (destroy contents) OUT_FILE */
+		if (!strcmp("-r", argv[4]) || (!strcmp("-s", argv[4]) && access(out_n, F_OK)))
+		{ /* If Overwrite OUT_FILE option OR (Start output from OUT_FILE beginning option AND out_n NOT exist) */
 			return fxor(in_n, key_n, out_n, false);
 		}
-		else if (!strcmp("--output-to-beginning", argv[4]) || !strcmp("-s", argv[4]))
+		else if (!strcmp("-s", argv[4]))
 		{ /* Start output from OUT_FILE beginning */
-			if (!access(out_n, F_OK))
-			{ /* exist */
-				return fxor(in_n, key_n, out_n, true);
-			}
-			else
-			{
-				return fxor(in_n, key_n, out_n, false);
-			}
-		}
-		else if (!strcmp("--ask", argv[4]) || !strcmp("-i", argv[4]))
-		{
-			if (access(out_n, F_OK))
-			{ /* NOT exist */
-				return fxor(in_n, key_n, out_n, false);
-			}
-			else
-			{
-				warnx(FILE_EXIST_WARN, out_n);
-				
-				if (fxor_y_or_n("Overwrite OUT_FILE then output?"))
-				{
-					return fxor(in_n, key_n, out_n, false);
-				}
-				else if (fxor_y_or_n("Start output from OUT_FILE beginning?"))
-				{
-					return fxor(in_n, key_n, out_n, true);
-				}
-				else
-				{
-					warnx(FXOR_ABORT_STR);
-					return FXOR_EX_ABORT;
-				}
-			}
-		}
-	}
-	else if (argc == 6 && (!strcmp("--ask", argv[4]) || !strcmp("-i", argv[4])))
-	{
-		if (!strcmp("--overwrite", argv[5]) || !strcmp("-r", argv[5]))
-		{ /* Overwrite (destroy contents) OUT_FILE */
-			if (access(out_n, F_OK))
-			{ /* NOT exist */
-				return fxor(in_n, key_n, out_n, false);
-			}
-			else
-			{
-				warnx(FILE_EXIST_WARN, out_n);
-				
-				if (fxor_y_or_n("Overwrite OUT_FILE then output?"))
-				{
-					return fxor(in_n, key_n, out_n, false);
-				}
-				else
-				{
-					warnx(FXOR_ABORT_STR);
-					return FXOR_EX_ABORT;
-				}
-			}
-		}
-		else if (!strcmp("--output-to-beginning", argv[5]) || !strcmp("-s", argv[5]))
-		{ /* Start output from OUT_FILE beginning */
-			if (access(out_n, F_OK))
-			{ /* NOT exist */
-				return fxor(in_n, key_n, out_n, false);
-			}
-			else
-			{
-				warnx(FILE_EXIST_WARN, out_n);
-				
-				if (fxor_y_or_n("Start output from OUT_FILE beginning?"))
-				{
-					return fxor(in_n, key_n, out_n, true);
-				}
-				else
-				{
-					warnx(FXOR_ABORT_STR);
-					return FXOR_EX_ABORT;
-				}
-			}
+			return fxor(in_n, key_n, out_n, true);
 		}
 	}
 	
-	invalid_cmd_usage();
-	
-	return EX_USAGE;
+	fprintf(stdout, INVALID_CMD_USAGE_STR);
+	return FXOR_EX_USAGE;
 }

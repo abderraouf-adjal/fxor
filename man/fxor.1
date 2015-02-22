@@ -1,5 +1,5 @@
-.\" This manual is current for version <0.1.2> of fxor.
-.TH FXOR "1" "11-2014" "fxor 0.1.2" ""
+.\" This manual is current for version <0.2.0> of fxor.
+.TH FXOR "1" "02-2015" "fxor 0.2.0" ""
 
 .SH NAME
 fxor \- a tool to encrypt/decrypt a file using XOR operation to do one-time pad
@@ -38,16 +38,13 @@ Key file name, Usually random bytes file.
 Output file name.
 
 .SH OPTIONS
-.IP "\fB\-\-overwrite\fR, \fB\-r\fR"
+.IP "\fB\-r\fR"
 Overwrite (destroy contents) \fIOUT_FILE\fR then output
 .br
-.IP "\fB\-\-output\-to\-beginning\fR, \fB\-s\fR"
+.IP "\fB\-s\fR"
 Start output from \fIOUT_FILE\fR beginning and replace bytes,
 .br
 Perfect to encrypt/decrypt \fIIN_FILE\fR and output to \fIIN_FILE\fR!
-.br
-.IP "\fB\-\-ask\fR, \fB\-i\fR"
-Ask before change \fIOUT_FILE\fR contents
 
 .SH EXAMPLES
 Output to \fIOUT_FILE\fR (overwrite if exist):
@@ -58,36 +55,28 @@ Output to \fIOUT_FILE\fR and replace byte by byte from beginning:
 .br
 	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR \fB\-s\fR
 
-Ask before change \fIOUT_FILE\fR contents:
-.br
-	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR \fB\-i\fR
-.br
-	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR \fB\-i\fR \fB\-r\fR
-.br
-	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR \fIOUT_FILE\fR \fB\-i\fR \fB\-s\fR
-
 Output to STDOUT:
 .br
 	\fBfxor\fR \fIIN_FILE\fR \fIKEY_FILE\fR
 
 .SH EXIT STATUS
 .IP "\fB0\fR"
-EX_OK \- successful termination
+FXOR_EX_OK \- successful termination
 .br
 .IP "\fB64\fR"
-EX_USAGE \- invalid command line usage
+FXOR_EX_USAGE \- invalid command line usage
 .br
 .IP "\fB66\fR"
-EX_NOINPUT \- cannot open input (e.g., files permissions)
+FXOR_EX_NOINPUT \- cannot open input (e.g., files permissions)
 .br
 .IP "\fB74\fR"
-EX_IOERR \- error while doing I/O (e.g., no free space left)
+FXOR_EX_IOERR \- error while doing I/O (e.g., no free space left)
 .br
 .IP "\fB80\fR"
 FXOR_EX_ABORT \- fxor abort
 .br
 .IP "\fB81\fR"
-EX_NOKEY \- key file is empty
+FXOR_EX_NOKEY \- key file is empty
 
 .SH AUTHOR
 Written by Abderraouf Adjal.
@@ -100,7 +89,7 @@ Or create an issue on GitHub:
 <https://github.com/abderraouf-adjal/fxor/issues>
 
 .SH COPYRIGHT
-Copyright (c) 2014 Abderraouf Adjal.  All rights reserved.
+Copyright (c) 2014-2015 Abderraouf Adjal.  All rights reserved.
 
 License: BSD 2-Clause License (Simplified BSD License). There is NO WARRANTY.
 

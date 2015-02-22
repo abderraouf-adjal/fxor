@@ -1,6 +1,6 @@
 /* fxor.h */
 /* 
- * Copyright (c) 2014, Abderraouf Adjal
+ * Copyright (c) 2014-2015, Abderraouf Adjal
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -34,20 +34,17 @@
 #include <stdbool.h>
 
 
-#ifndef FXOR_VERSION
-# define FXOR_VERSION "0.1.2"
-#endif
+#define FXOR_VERSION "0.2.0"
 
-#ifndef FXOR_COPYING
-# define FXOR_COPYING "\
-Copyright (c) 2014 Abderraouf Adjal.  All rights reserved.\n\
+
+#define FXOR_COPYING "\
+Copyright (c) 2014-2015 Abderraouf Adjal.  All rights reserved.\n\
 License: BSD 2-Clause License (Simplified BSD License).\n\
 There is NO WARRANTY.\n\
 See the file 'COPYING' for details.\n"
-#endif
 
-#ifndef FXOR_USAGE
-# define FXOR_USAGE "\
+
+#define FXOR_USAGE "\
 fxor - a tool to encrypt/decrypt a file using XOR operation to do one-time pad\n\
 \n\
 Usage:\n\
@@ -68,38 +65,26 @@ Description:\n\
 \n\
   fxor can be used as OTP (One-Time Pad) tool.\n\
 \n\
-  IN_FILE: Input file name, Witch will processed.\n\
+  IN_FILE:  Input file name, Witch will processed.\n\
   KEY_FILE: Key file name, Usually random bytes file.\n\
   OUT_FILE: Output file name.\n\
 \n\
 Options:\n\
-  --overwrite, -r\n\
-      Overwrite (destroy contents) OUT_FILE then output\n\
+  -r    Overwrite (destroy contents) OUT_FILE then output\n\
 \n\
-  --output-to-beginning, -s\n\
-      Start output from OUT_FILE beginning and replace bytes,\n\
-      Perfect to encrypt/decrypt IN_FILE and output to IN_FILE!\n\
-\n\
-  --ask, -i\n\
-      Ask before change OUT_FILE contents\n\
+  -s    Start output from OUT_FILE beginning and replace bytes,\n\
+        Perfect to encrypt/decrypt IN_FILE and output to IN_FILE!\n\
 \n\
 Report fxor bugs to: <abderraouf.adjal@gmail.com>\n\
 Or create an issue on GitHub: <https://github.com/abderraouf-adjal/fxor/issues>\n"
-#endif
 
-#ifndef INVALID_CMD_USAGE_STR
+
 # define INVALID_CMD_USAGE_STR "\
 Invalid command line usage.\n\
 Try 'fxor --help' to show usage information.\n"
-#endif
 
-#ifndef FXOR_ABORT_STR
-# define FXOR_ABORT_STR "Abort."
-#endif
 
-#ifndef FILE_EXIST_WARN
-# define FILE_EXIST_WARN "WARNING: '%s' is exist"
-#endif
+void safe_fclose(FILE *s);
 
 
 /**
@@ -107,7 +92,7 @@ Try 'fxor --help' to show usage information.\n"
  * 
  * If out_n == NULL, output to stdout
  * 
- * Return EX_OK (0): done Successfully
+ * Return FXOR_EX_OK (0): Done Successfully
  * Return non-zero if:
  * 	I/O errors
  * 	key_file is empty
@@ -116,14 +101,6 @@ Try 'fxor --help' to show usage information.\n"
  */
 
 int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from_beginning);
-
-void invalid_cmd_usage(void);
-
-void usage(void);
-
-void version(void);
-
-void copyright(void);
 
 
 #endif /* fxor.h */

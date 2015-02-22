@@ -1,6 +1,6 @@
 /* fxor_stream_xor.h */
 /*
- * Copyright (c) 2014, Abderraouf Adjal
+ * Copyright (c) 2014-2015, Abderraouf Adjal
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -34,9 +34,18 @@
 #include <stdio.h>
 
 
-#ifndef XOR_BUFFSIZE
-# define XOR_BUFFSIZE 1024*32
-#endif
+#define FXOR_XOR_BUFFSIZE 1024*32
+
+
+/**
+ * is_empty_fp()
+ * 
+ * Need stream name to show error messages
+ * 
+ * Return:  0: NOT Empty; 1: Empty; -1: I/O Error
+ */
+
+int is_empty_fp(FILE *fp, const char *fp_name);
 
 
 /**
@@ -44,11 +53,11 @@
  * 
  * files/streams names are just to show them in errors messages
  * 
- * Return EX_OK (0): done Successfully
- * Return non-zero: Errors (like I/O errors), Or key_s is empty.
+ * Return FXOR_EX_OK (0): Done Successfully
+ * Return non-zero:  Errors (like I/O errors), OR key_s is empty.
  */
 
-int fxor_stream_xor(FILE *in_s, FILE *key_s, FILE *out_s,
+int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 	const char *in_n, const char *key_n, const char *out_n);
 
 

@@ -1,27 +1,41 @@
-From 0.1.1 to 0.1.2 _ 2014-11-01
-================================
-- NEW:
-* Add README.md
-* Add scripts/opssl_rand.sh; the script take IN_FILE_NAME size and run openssl command
-	to make a random file (OUT_FILE_NAME), So OUT_FILE_NAME_SIZE = IN_FILE_NAME_SIZE
-
-- OPTIMIZATIONS:
-* Remove unused code "Read 1 byte test from streams in_f and key_f" in <src/fxor.c>
-* Update fxor description
-* Tiny optimizations in fxor docs.
-
-
-From 0.1 to 0.1.1 _ 2014-10-14
-==============================
-- FIXED BUGS:
-* Fix fxor_stream_xor() in <src/fxor_stream_xor.c> return wrong number when the key is empty.
-
-- OPTIMIZATIONS:
-* Reduce hearders dependencies in <src/is_empty_stream.c>
-* Tiny optimizations in fxor docs.
-* Other optimizations and tiny bugs fixing...
+Version 0.2.0 - 2015-02-22
+==========================
+	* CHANGES:
+	- The prompt option '--ask, -i' removed.
+	- The two long options '--overwrite' and '--output-to-beginning' removed.
+	- Docs updated to be compatible with the code.
+	- Update copyright year.
+	
+	* OPTIMIZATIONS:
+	- Add and use safe_fclose() to close opened files.
+	- fxor now use less code and less source-code files.
+	- Tiny optimizations in fxor docs.
 
 
-0.1 _ 2014-09
-=============
-* first useable version
+Version 0.1.2 - 2014-11-01
+==========================
+	* NEW:
+	- Add README.md
+	- Add scripts/opssl_rand.sh; the script takes IN_FILE_NAME size and run openssl command
+		to make a random file (OUT_FILE_NAME), So OUT_FILE_NAME_SIZE = IN_FILE_NAME_SIZE
+	
+	* OPTIMIZATIONS:
+	- Remove unused code "Read one byte test from streams in_f and key_f" in <src/fxor.c>
+	- Update fxor description.
+	- Tiny optimizations in fxor docs.
+
+
+Version 0.1.1 - 2014-10-14
+==========================
+	* FIXED BUGS:
+	- fxor_stream_xor() in <src/fxor_stream_xor.c> return wrong number when the key is empty.
+	
+	* OPTIMIZATIONS:
+	- Reduce hearders dependencies in <src/is_empty_stream.c>
+	- Tiny optimizations in fxor docs.
+	- Other optimizations and tiny bugs fixing.
+
+
+Version 0.1 - 2014-09
+=====================
+	- first useable version

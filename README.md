@@ -39,15 +39,12 @@ fxor can be used as [OTP (One-Time Pad)](http://en.wikipedia.org/wiki/One-time_p
 
 ## Options
 
-`--overwrite`, `-r`:
+`-r`:
 Overwrite (destroy contents) **OUT_FILE** then output
 
-`--output-to-beginning`, `-s`:
+`-s`:
 Start output from **OUT_FILE** beginning and replace bytes,
 Perfect to encrypt/decrypt **IN_FILE** and output to **IN_FILE**!
-
-`--ask`, `-i`:
-Ask before change **OUT_FILE** contents
 
 
 ## Examples
@@ -59,12 +56,6 @@ Output to **OUT_FILE** (overwrite if exist):
 Output to **OUT_FILE** and replace byte by byte from beginning:
 
 	fxor IN_FILE KEY_FILE OUT_FILE -s
-
-Ask before change **OUT_FILE** contents:
-
-	fxor IN_FILE KEY_FILE OUT_FILE -i
-	fxor IN_FILE KEY_FILE OUT_FILE -i -r
-	fxor IN_FILE KEY_FILE OUT_FILE -i -s
 
 Output to *STDOUT*:
 
@@ -78,6 +69,7 @@ fxor follows the [semantic versioning](http://semver.org) scheme.
 
 ## fxor releases
 
+* [fxor v0.2.0](https://github.com/abderraouf-adjal/fxor/releases/tag/v0.2.0)
 * [fxor v0.1.2](https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.2)
 * [fxor v0.1.1](https://github.com/abderraouf-adjal/fxor/releases/tag/v0.1.1)
 
@@ -130,7 +122,7 @@ Or [create an issue on GitHub](https://github.com/abderraouf-adjal/fxor/issues).
 
 ## Copyright
 
-Copyright (c) 2014 [Abderraouf Adjal](https://github.com/abderraouf-adjal).  All rights reserved.
+Copyright (c) 2014-2015 [Abderraouf Adjal](https://github.com/abderraouf-adjal).  All rights reserved.
 
 License: [BSD 2-Clause License (Simplified BSD License)](http://opensource.org/licenses/BSD-2-Clause). There is NO WARRANTY.
 

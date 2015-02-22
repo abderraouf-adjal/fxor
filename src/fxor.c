@@ -1,6 +1,6 @@
 /* fxor.c */
 /* 
- * Copyright (c) 2014, Abderraouf Adjal
+ * Copyright (c) 2014-2015, Abderraouf Adjal
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -33,9 +33,9 @@
 #include <stdbool.h>
 #include <err.h>
 
-#include "fxor_exits.h"
 #include "fxor.h"
 #include "fxor_stream_xor.h"
+#include "fxor_exits.h"
 
 
 /**
@@ -43,98 +43,90 @@
  * 
  * If out_n is NULL, output to stdout
  * 
- * Return EX_OK (0): done Successfully
+ * Return FXOR_EX_OK (0): Done Successfully
  * Return non-zero if:
  * 	I/O errors
- * 	key_file is empty
- * 	(in_file Or key_file) not exist Or not readable
- * 	out_file exist And not writable
+ * 	key_fpile is empty
+ * 	(in_fpile OR key_fpile) NOT exist OR NOT readable
+ * 	out_fpile exist AND NOT writable
  */
 
 int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from_beginning)
 {
-	FILE *in_f = NULL, *key_f = NULL, *out_f = NULL;
+	FILE *in_fp, *key_fp, *out_fp = NULL;
+	int r;
 	
-	
-	if (access(in_n, R_OK) || access(key_n, R_OK)
-	       || (out_n != NULL && (!access(out_n, F_OK) && access(out_n, W_OK)))
-	   )
+	if (access(in_n, R_OK) || access(key_n, R_OK) || (out_n && !access(out_n, F_OK) && access(out_n, W_OK)))
 	{
 		if (access(in_n, R_OK))
-		{ /* If the file NOT exist OR NOT readable */
+		{ /* If in_n NOT exist OR NOT readable */
 			warn("%s", in_n);
 		}
 		if (access(key_n, R_OK))
-		{ /* If the file NOT exist OR NOT readable */
+		{ /* If key_n NOT exist OR NOT readable */
 			warn("%s", key_n);
 		}
-		if (out_n != NULL && (!access(out_n, F_OK) && access(out_n, W_OK)))
-		{ /* If the file exist And NOT writable */
+		if (out_n && (!access(out_n, F_OK) && access(out_n, W_OK)))
+		{ /* If out_n exist AND NOT writable */
 			warn("%s", out_n);
 		}
 		
-		return EX_NOINPUT;
+		return FXOR_EX_NOINPUT;
 	}
 	
+	in_fp  = fopen(in_n, "rb");
+	key_fp = fopen(key_n, "rb");
 	
-	in_f = fopen(in_n, "rb");
-	key_f = fopen(key_n, "rb");
-	
-	if (!in_f || !key_f)
+	if (!in_fp || !key_fp)
 	{
-		if (!in_f)
+		if (!in_fp)
 		{
 			warn("%s", in_n);
 		}
-		if (!key_f)
+		if (!key_fp)
 		{
 			warn("%s", key_n);
 		}
 		
-		return EX_IOERR;
-	}
-	
-	
-	if (out_n != NULL)
-	{ /* output to a file */
-		out_f = write_from_beginning == true ? fopen(out_n, "rb+") : fopen(out_n, "wb");
+		r = FXOR_EX_IOERR;
 	}
 	else
-	{ /* output to stdout */
-		out_f = stdout;
-		out_n = "(stdout)";
-	}
-	
-	if (!out_f)
 	{
-		warn("%s", out_n);
-		return EX_IOERR;
+		if (out_n)
+		{ /* output to out_fp */
+			out_fp = write_from_beginning ? fopen(out_n, "rb+") : fopen(out_n, "wb");
+			if (out_fp)
+			{
+				r = fxor_stream_xor(in_fp, key_fp, out_fp, in_n, key_n, out_n);
+			}
+			else
+			{
+				warn("%s", out_n);
+				r = FXOR_EX_IOERR;
+			}
+		}
+		else
+		{ /* output to stdout */
+			r = fxor_stream_xor(in_fp, key_fp, stdout, in_n, key_n, "(stdout)");
+		}
 	}
 	
+	safe_fclose(in_fp);
+	safe_fclose(key_fp);
+	safe_fclose(out_fp);
 	
-	return fxor_stream_xor(in_f, key_f, out_f, in_n, key_n, out_n);
+	return r;
 }
 
 
-void invalid_cmd_usage(void)
+void safe_fclose(FILE *fp)
 {
-	fprintf(stdout, INVALID_CMD_USAGE_STR);
-}
-
-
-void usage(void)
-{
-	fprintf(stdout, FXOR_USAGE);
-}
-
-
-void version(void)
-{
-	fprintf(stdout, "fxor version %s\n", FXOR_VERSION);
-}
-
-
-void copyright(void)
-{
-	fprintf(stdout, "%s", FXOR_COPYING);
+	if (fp != stdout && fp)
+	{
+		if (fclose(fp) == EOF)
+		{
+			perror("fclose()");
+		}
+		fp = NULL;
+	}
 }

@@ -16,9 +16,11 @@ fxor FAQ
 
 3.
 - Q: What is one-time pad (OTP)?
-- A: One-time pad: <https://en.wikipedia.org/wiki/One-time_pad>,
-     From Wikipedia: "In cryptography, a one-time pad (OTP) is an encryption
-     technique that cannot be cracked if used correctly..."
+- A: From Simple English Wikipedia <https://simple.wikipedia.org/wiki/One-time_pad>:
+     “A One-time pad is a method of encryption. It is a 'symmetrical encryption',
+     which means the same key is needed for encryption and decryption. A one time pad uses
+     a key that is either as long or longer than the message it encrypts. If this method
+     is used correctly, it is impossible to decrypt or break the encryption without the key.”
 
 
 4.
@@ -35,14 +37,14 @@ fxor FAQ
 
 
 6.
-- Q: For what is the options '--output-to-beginning, -s'?
+- Q: For what is the option '-s'?
 - A: If you have a 4GB file in a 4GB USB flash drive,
      You can encrypt/decrypt it on the same file and the disk!
 
 
 7.
 - Q: What will happen if i run 'fxor file1 key file1 -r'?
-- A: You will just lose 'file1' data, '--overwrite, -r' will make 'file1" empty first,
+- A: You will just lose 'file1' data, '-r' will make 'file1" empty first,
      So no data will be exist to encrypt/decrypt it.
 
 

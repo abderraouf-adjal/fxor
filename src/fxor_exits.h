@@ -1,6 +1,6 @@
 /* fxor_exits.h */
 /* 
- * Copyright (c) 2014, Abderraouf Adjal
+ * Copyright (c) 2014-2015, Abderraouf Adjal
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -31,16 +31,12 @@
 #define _FXOR_EXITS_H
 
 
-#include <sysexits.h>
-
-
-#ifndef FXOR_EX_ABORT
-# define FXOR_EX_ABORT 80
-#endif
-
-#ifndef EX_NOKEY
-# define EX_NOKEY 81 /* e.g: Key file is empty */
-#endif
+#define FXOR_EX_OK		0	/* successful termination */
+#define FXOR_EX_USAGE	64	/* invalid command line usage */
+#define FXOR_EX_NOINPUT	66	/* cannot open input (e.g., files permissions) */
+#define FXOR_EX_IOERR	74	/* error while doing I/O (e.g., no free space left) */
+#define FXOR_EX_ABORT	80	/* fxor abort the operation */
+#define FXOR_EX_NOKEY	81	/* key file is empty */
 
 
 #endif /* fxor_exits.h */
