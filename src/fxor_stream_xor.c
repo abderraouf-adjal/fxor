@@ -161,6 +161,11 @@ int is_empty_fp(FILE *fp, const char *fp_name)
 				return -1;
 			}
 		}
+		else if (ferror(fp))
+		{
+			warn("%s: %s", __func__, fp_name);
+			return -1;
+		}
 	}
 	else if (!ferror(fp))
 	{
