@@ -94,10 +94,10 @@ void safe_fclose(FILE *s);
  * 
  * Return FXOR_EX_OK (0): Done Successfully
  * Return non-zero if:
- * 	I/O errors
- * 	key_file is empty
- * 	(in_file Or key_file) not exist Or not readable
- * 	out_file exist And not writable
+ *   I/O errors
+ *   key_file is empty
+ *   (in_file Or key_file) not exist Or not readable
+ *   out_file exist And not writable
  */
 
 int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from_beginning);

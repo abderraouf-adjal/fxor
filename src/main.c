@@ -43,44 +43,39 @@ int main(int argc, char *argv[])
 	const char *key_n = argc >= 3 ? argv[2] : NULL;
 	const char *out_n = argc >= 4 ? argv[3] : NULL;
 	
-	if (argc == 2)
-	{
-		if (!strcmp("--help", argv[1]))
-		{ /* Print usage help */
+	if (argc == 2) {
+		if (!strcmp("--help", argv[1])) {
+			/* Print usage help */
 			fprintf(stdout, FXOR_USAGE);
 			return FXOR_EX_OK;
 		}
-		else if (!strcmp("--version", argv[1]))
-		{ /* Print version and copyright */
+		else if (!strcmp("--version", argv[1])) { /* Print version and copyright */
 			fprintf(stdout, "fxor version %s\n%s", FXOR_VERSION, FXOR_COPYING);
 			return FXOR_EX_OK;
 		}
 	}
-	else if (argc == 3)
-	{ /* Output to stdout */
+	else if (argc == 3) {
+		/* Output to stdout */
 		return fxor(in_n, key_n, NULL, false);
 	}
-	else if (argc == 4)
-	{
-		if (access(out_n, F_OK))
-		{ /* If out_n NOT exist */
+	else if (argc == 4) {
+		if (access(out_n, F_OK)) {
+			/* If out_n NOT exist */
 			return fxor(in_n, key_n, out_n, false);
 		}
-		else
-		{
+		else {
 			warnx("WARNING: '%s' is exist", out_n);
 			warnx("Abort.");
 			return FXOR_EX_ABORT;
 		}
 	}
-	else if (argc == 5)
-	{
-		if (!strcmp("-r", argv[4]) || (!strcmp("-s", argv[4]) && access(out_n, F_OK)))
-		{ /* If Overwrite OUT_FILE option OR (Start output from OUT_FILE beginning option AND out_n NOT exist) */
+	else if (argc == 5) {
+		if (!strcmp("-r", argv[4]) || (!strcmp("-s", argv[4]) && access(out_n, F_OK))) {
+			/* Overwrite OUT_FILE option OR (Start output from OUT_FILE beginning option AND out_n NOT exist) */
 			return fxor(in_n, key_n, out_n, false);
 		}
-		else if (!strcmp("-s", argv[4]))
-		{ /* Start output from OUT_FILE beginning */
+		else if (!strcmp("-s", argv[4])) {
+			/* Start output from OUT_FILE beginning */
 			return fxor(in_n, key_n, out_n, true);
 		}
 	}

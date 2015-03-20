@@ -40,7 +40,7 @@
  * files/streams names are just to show them in errors messages
  * 
  * Return FXOR_EX_OK (0): Done Successfully
- * Return non-zero:  Errors (like I/O errors), OR key_fp is empty.
+ * Return non-zero:  Errors (e.g., I/O errors), OR key_fp is empty.
  */
 
 int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
@@ -50,18 +50,14 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 	size_t in_l = 0, key_l = 0, data_i = 0, key_i = 0;
 	int is_empty_fp_return;
 	
-	if (!in_fp || !key_fp || !out_fp)
-	{
-		if (!in_fp)
-		{
+	if (!in_fp || !key_fp || !out_fp) {
+		if (!in_fp) {
 			warn("%s: %s", __func__, in_n);
 		}
-		if (!key_fp)
-		{
+		if (!key_fp) {
 			warn("%s: %s", __func__, key_n);
 		}
-		if (!out_fp)
-		{
+		if (!out_fp) {
 			warn("%s: %s", __func__, out_n);
 		}
 		
@@ -70,13 +66,11 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 	
 	/* Check if key stream is empty */
 	is_empty_fp_return = is_empty_fp(key_fp, key_n);
-	if (is_empty_fp_return == 1)
-	{
+	if (is_empty_fp_return == 1) {
 		warnx("ERROR: '%s' is empty.", key_n);
 		return FXOR_EX_NOKEY;
 	}
-	else if (is_empty_fp_return && is_empty_fp_return != 1)
-	{
+	else if (is_empty_fp_return && is_empty_fp_return != 1) {
 		return FXOR_EX_IOERR;
 	}
 	
@@ -86,32 +80,30 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 		data_i = 0;
 		
 		in_l = fread(data, sizeof(unsigned char), sizeof(data), in_fp);
-		if (ferror(in_fp))
-		{
+		if (ferror(in_fp)) {
 			warn("%s: %s", __func__, in_n);
 			return FXOR_EX_IOERR;
 		}
 		
-		if (in_l)
-		{
+		if (in_l) {
 			while (data_i < in_l)
 			{
-				if (key_i >= key_l)
-				{ /* Get Data From key_fp */
-					key_i = 0;
+				if (key_i >= key_l) {
+					/* Get Data From key_fp */
 					
 					key_l = fread(key, sizeof(unsigned char), sizeof(key), key_fp);
-					if (ferror(key_fp))
-					{
+					if (ferror(key_fp)) {
 						warn("%s: %s", __func__, key_n);
 						return FXOR_EX_IOERR;
 					}
 					
-					if (!key_l && feof(key_fp))
-					{ /* End Of key_fp; Back to key_fp beginning */
+					if (!key_l && feof(key_fp)) {
+						/* End Of key_fp; Back to key_fp beginning */
 						rewind(key_fp);
 						continue;
 					}
+					
+					key_i = 0;
 				}
 				
 				data[data_i] ^= key[key_i];
@@ -121,14 +113,13 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 			}
 			
 			fwrite(data, sizeof(unsigned char), in_l, out_fp);
-			if (ferror(out_fp))
-			{
+			if (ferror(out_fp)) {
 				warn("%s: %s", __func__, out_n);
 				return FXOR_EX_IOERR;
 			}
 		}
-		else if (!in_l && feof(in_fp))
-		{ /* End Of in_fp */
+		else if (!in_l && feof(in_fp)) {
+			/* End Of in_fp */
 			return FXOR_EX_OK;
 		}
 	}
@@ -140,46 +131,42 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
  * 
  * Need stream name to show error messages
  * 
- * Return:  0: NOT Empty; 1: Empty; -1: I/O Error
+ * Return:  0 if NOT Empty; 1 if Empty; -1 if I/O Error
  */
 
 int is_empty_fp(FILE *fp, const char *fp_name)
 {
-	if (fgetc(fp) == EOF && !ferror(fp))
-	{
+	if (fgetc(fp) == EOF && !ferror(fp)) {
 		rewind(fp);
 		
-		if (fgetc(fp) == EOF && !ferror(fp))
-		{
-			return 1; /* Empty */
+		if (fgetc(fp) == EOF && !ferror(fp)) {
+			/* Empty */
+			
+			return 1;
 		}
-		else if (!ferror(fp))
-		{
-			if (fseek(fp, 0, SEEK_END))
-			{
-				warn("%s: %s", __func__, fp_name);
+		else if (!ferror(fp)) {
+			if (fseek(fp, 0, SEEK_END)) {
+				warn("%s", fp_name);
 				return -1;
 			}
 		}
-		else if (ferror(fp))
-		{
-			warn("%s: %s", __func__, fp_name);
+		else if (ferror(fp)) {
+			warn("%s", fp_name);
 			return -1;
 		}
 	}
-	else if (!ferror(fp))
-	{
-		if (fseek(fp, -1, SEEK_CUR))
-		{
-			warn("%s: %s", __func__, fp_name);
+	else if (!ferror(fp)) {
+		if (fseek(fp, -1, SEEK_CUR)) {
+			warn("%s", fp_name);
 			return -1;
 		}
 	}
-	else if (ferror(fp))
-	{
-		warn("%s: %s", __func__, fp_name);
+	else if (ferror(fp)) {
+		warn("%s", fp_name);
 		return -1;
 	}
 	
-	return 0; /* Not empty */
+	/* Not empty */
+	
+	return 0; 
 }

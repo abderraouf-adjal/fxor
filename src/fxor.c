@@ -45,10 +45,10 @@
  * 
  * Return FXOR_EX_OK (0): Done Successfully
  * Return non-zero if:
- * 	I/O errors
- * 	key_fpile is empty
- * 	(in_fpile OR key_fpile) NOT exist OR NOT readable
- * 	out_fpile exist AND NOT writable
+ *   I/O errors
+ *   key_fpile is empty
+ *   (in_fpile OR key_fpile) NOT exist OR NOT readable
+ *   out_fpile exist AND NOT writable
  */
 
 int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from_beginning)
@@ -56,18 +56,17 @@ int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from
 	FILE *in_fp, *key_fp, *out_fp = NULL;
 	int r;
 	
-	if (access(in_n, R_OK) || access(key_n, R_OK) || (out_n && !access(out_n, F_OK) && access(out_n, W_OK)))
-	{
-		if (access(in_n, R_OK))
-		{ /* If in_n NOT exist OR NOT readable */
+	if (access(in_n, R_OK) || access(key_n, R_OK) || (out_n && !access(out_n, F_OK) && access(out_n, W_OK))) {
+		if (access(in_n, R_OK)) {
+			/* in_n NOT exist OR NOT readable */
 			warn("%s", in_n);
 		}
-		if (access(key_n, R_OK))
-		{ /* If key_n NOT exist OR NOT readable */
+		if (access(key_n, R_OK)) {
+			/* key_n NOT exist OR NOT readable */
 			warn("%s", key_n);
 		}
-		if (out_n && (!access(out_n, F_OK) && access(out_n, W_OK)))
-		{ /* If out_n exist AND NOT writable */
+		if (out_n && (!access(out_n, F_OK) && access(out_n, W_OK))) {
+			/* out_n exist AND NOT writable */
 			warn("%s", out_n);
 		}
 		
@@ -77,36 +76,31 @@ int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from
 	in_fp  = fopen(in_n, "rb");
 	key_fp = fopen(key_n, "rb");
 	
-	if (!in_fp || !key_fp)
-	{
-		if (!in_fp)
-		{
+	if (!in_fp || !key_fp) {
+		if (!in_fp) {
 			warn("%s", in_n);
 		}
-		if (!key_fp)
-		{
+		if (!key_fp) {
 			warn("%s", key_n);
 		}
 		
 		r = FXOR_EX_IOERR;
 	}
-	else
-	{
-		if (out_n)
-		{ /* output to out_fp */
+	else {
+		if (out_n) {
+			/* output to out_fp */
+			
 			out_fp = write_from_beginning ? fopen(out_n, "rb+") : fopen(out_n, "wb");
-			if (out_fp)
-			{
+			if (out_fp) {
 				r = fxor_stream_xor(in_fp, key_fp, out_fp, in_n, key_n, out_n);
 			}
-			else
-			{
+			else {
 				warn("%s", out_n);
 				r = FXOR_EX_IOERR;
 			}
 		}
-		else
-		{ /* output to stdout */
+		else {
+			/* output to stdout */
 			r = fxor_stream_xor(in_fp, key_fp, stdout, in_n, key_n, "(stdout)");
 		}
 	}
@@ -121,10 +115,8 @@ int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from
 
 void safe_fclose(FILE *fp)
 {
-	if (fp != stdout && fp)
-	{
-		if (fclose(fp) == EOF)
-		{
+	if (fp && fp != stdout) {
+		if (fclose(fp) == EOF) {
 			perror("fclose()");
 		}
 		fp = NULL;

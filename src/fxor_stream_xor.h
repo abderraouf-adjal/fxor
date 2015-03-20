@@ -42,7 +42,7 @@
  * 
  * Need stream name to show error messages
  * 
- * Return:  0: NOT Empty; 1: Empty; -1: I/O Error
+ * Return:  0 if NOT Empty; 1 if Empty; -1 if I/O Error
  */
 
 int is_empty_fp(FILE *fp, const char *fp_name);
@@ -54,7 +54,7 @@ int is_empty_fp(FILE *fp, const char *fp_name);
  * files/streams names are just to show them in errors messages
  * 
  * Return FXOR_EX_OK (0): Done Successfully
- * Return non-zero:  Errors (like I/O errors), OR key_s is empty.
+ * Return non-zero:  Errors (e.g., I/O errors), OR key_s is empty.
  */
 
 int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
