@@ -84,9 +84,6 @@ Invalid command line usage.\n\
 Try 'fxor --help' to show usage information.\n"
 
 
-void safe_fclose(FILE *s);
-
-
 /**
  * fxor()
  * 
