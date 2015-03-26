@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
 	
 	if (argc == 2) {
 		if (!strcmp("--help", argv[1])) {
-			/* Print usage help */
 			fprintf(stdout, FXOR_USAGE);
 			return FXOR_EX_OK;
 		}

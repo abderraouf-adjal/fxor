@@ -54,7 +54,7 @@ void safe_fclose(FILE *fp);
 
 int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from_beginning)
 {
-	FILE *in_fp, *key_fp, *out_fp = NULL;
+	FILE *in_fp, *key_fp, *out_fp;
 	int r;
 	
 	if (access(in_n, R_OK) || access(key_n, R_OK) || (out_n && !access(out_n, F_OK) && access(out_n, W_OK))) {
@@ -99,6 +99,8 @@ int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from
 				warn("%s", out_n);
 				r = FXOR_EX_IOERR;
 			}
+			
+			safe_fclose(out_fp);
 		}
 		else {
 			/* output to stdout */
@@ -108,7 +110,6 @@ int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from
 	
 	safe_fclose(in_fp);
 	safe_fclose(key_fp);
-	safe_fclose(out_fp);
 	
 	return r;
 }
@@ -116,7 +117,7 @@ int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from
 
 void safe_fclose(FILE *fp)
 {
-	if (fp && fp != stdout) {
+	if (fp && fp != stdout && fp != stderr) {
 		if (fclose(fp) == EOF) {
 			perror("fclose()");
 		}
