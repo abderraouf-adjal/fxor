@@ -36,7 +36,7 @@
 #include "fxor_exits.h"
 
 
-static void safe_fclose(FILE *fp);
+void safe_fclose(FILE *fp);
 
 
 /**
@@ -114,7 +114,7 @@ int fxor(const char *in_n, const char *key_n, const char *out_n, bool write_from
 }
 
 
-static void safe_fclose(FILE *fp)
+void safe_fclose(FILE *fp)
 {
 	if (fp && fp != stdout) {
 		if (fclose(fp) == EOF) {
