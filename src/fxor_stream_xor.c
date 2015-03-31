@@ -37,7 +37,7 @@
 /**
  * fxor_stream_xor()
  * 
- * files/streams names are just to show them in errors messages
+ * files/fp names are just to show them in errors messages
  * 
  * Return FXOR_EX_OK (0): Done Successfully
  * Return non-zero:  Errors (e.g., I/O errors), OR key_fp is empty.
@@ -47,8 +47,8 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 	const char *in_n, const char *key_n, const char *out_n)
 {
 	static unsigned char data[FXOR_XOR_BUFFSIZE], key[FXOR_XOR_BUFFSIZE];
-	size_t in_l = 0, key_l = 0, data_i = 0, key_i = 0;
-	int is_empty_fp_return;
+	size_t in_l, key_l = 0, key_i = 0, data_i;
+	int is_empty_key_fp_r;
 	
 	if (!in_fp || !key_fp || !out_fp) {
 		if (!in_fp) {
@@ -64,13 +64,13 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 		return FXOR_EX_IOERR;
 	}
 	
-	/* Check if key stream is empty */
-	is_empty_fp_return = is_empty_fp(key_fp, key_n);
-	if (is_empty_fp_return == 1) {
-		warnx("ERROR: '%s' is empty.", key_n);
-		return FXOR_EX_NOKEY;
-	}
-	else if (is_empty_fp_return && is_empty_fp_return != 1) {
+	/* Check if key_fp is empty */
+	if ((is_empty_key_fp_r = is_empty_fp(key_fp, key_n))) {
+		if (is_empty_key_fp_r == 1) {
+			warnx("ERROR: '%s' is empty.", key_n);
+			return FXOR_EX_NOKEY;
+		}
+		
 		return FXOR_EX_IOERR;
 	}
 	
@@ -91,6 +91,8 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 				if (key_i >= key_l) {
 					/* Get Data From key_fp */
 					
+					key_i = 0;
+					
 					key_l = fread(key, sizeof(unsigned char), sizeof(key), key_fp);
 					if (ferror(key_fp)) {
 						warn("%s: %s", __func__, key_n);
@@ -102,8 +104,6 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 						rewind(key_fp);
 						continue;
 					}
-					
-					key_i = 0;
 				}
 				
 				data[data_i] ^= key[key_i];
@@ -129,9 +129,8 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 /**
  * is_empty_fp()
  * 
- * Need stream name to show error messages
- * 
- * Return:  0 if NOT Empty; 1 if Empty; -1 if I/O Error
+ * Need fp name to show error messages
+ * Return:  (0): NOT empty;  (1): Empty;  (-1): I/O Error
  */
 
 int is_empty_fp(FILE *fp, const char *fp_name)
@@ -166,7 +165,7 @@ int is_empty_fp(FILE *fp, const char *fp_name)
 		return -1;
 	}
 	
-	/* Not empty */
+	/* NOT empty */
 	
 	return 0; 
 }
