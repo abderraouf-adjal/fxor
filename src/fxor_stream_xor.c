@@ -101,7 +101,7 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 					
 					if (!key_l && feof(key_fp)) {
 						/* End Of key_fp; Back to key_fp beginning */
-						if (fseek(key_fp, 0, SEEK_SET)) {
+						if (fseek(key_fp, 0L, SEEK_SET)) {
 							return FXOR_EX_IOERR;
 						}
 						continue;
@@ -138,7 +138,7 @@ int fxor_stream_xor(FILE *in_fp, FILE *key_fp, FILE *out_fp,
 int is_empty_fp(FILE *fp, const char *fp_name)
 {
 	if (fgetc(fp) == EOF && !ferror(fp)) {
-		if (fseek(fp, 0, SEEK_SET)) {
+		if (fseek(fp, 0L, SEEK_SET)) {
 			goto err;
 		}
 		
@@ -147,13 +147,13 @@ int is_empty_fp(FILE *fp, const char *fp_name)
 			return 1;
 		}
 		else if (!ferror(fp)) {
-			if (fseek(fp, 0, SEEK_END)) {
+			if (fseek(fp, 0L, SEEK_END)) {
 				goto err;
 			}
 		}
 	}
 	else if (!ferror(fp)) {
-		if (fseek(fp, -1, SEEK_CUR)) {
+		if (fseek(fp, -1L, SEEK_CUR)) {
 			goto err;
 		}
 	}
@@ -162,8 +162,7 @@ int is_empty_fp(FILE *fp, const char *fp_name)
 		goto err;
 	}
 	
-	/* NOT empty */
-	return 0; 
+	return 0; /* NOT empty */
 	
 	err:
 	warn("%s", fp_name);
