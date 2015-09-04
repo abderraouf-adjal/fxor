@@ -143,8 +143,7 @@ int is_empty_fp(FILE *fp, const char *fp_name)
 		}
 		
 		if (fgetc(fp) == EOF && !ferror(fp)) {
-			/* Empty */
-			return 1;
+			return 1; /* Empty */
 		}
 		else if (!ferror(fp)) {
 			if (fseek(fp, 0L, SEEK_END)) {
@@ -158,11 +157,9 @@ int is_empty_fp(FILE *fp, const char *fp_name)
 		}
 	}
 	
-	if (ferror(fp)) {
-		goto err;
+	if (!ferror(fp)) {
+		return 0; /* NOT empty */
 	}
-	
-	return 0; /* NOT empty */
 	
 	err:
 	warn("%s", fp_name);

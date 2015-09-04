@@ -34,7 +34,7 @@
 #include <stdbool.h>
 
 
-#define FXOR_VERSION "0.2.1"
+#define FXOR_VERSION "0.2.2"
 
 
 #define FXOR_COPYING "\

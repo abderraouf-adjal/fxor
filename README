@@ -111,12 +111,6 @@ Uninstall:
 	% make PREFIX="/directory/directory" uninstall
 
 
-Version
-=======
-
-This README is current for version <0.1.3> of fxor.
-
-
 Reporting bugs
 ==============
 

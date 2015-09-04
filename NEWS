@@ -1,5 +1,10 @@
 See the file 'ChangeLog' for details.
 
+2015-09-04:
+===========
+* fxor v0.2.2 released, Tiny code optimization.
+
+
 2015-04-01:
 ===========
 * fxor v0.2.1 released, Tiny code optimization and indent style changes.
